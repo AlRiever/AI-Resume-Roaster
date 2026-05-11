@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Theme variables — canonical source of truth
+   ------------------------------------------------------------
+   Defined here in globals.css so EVERY page picks them up
+   automatically. The homepage (app/page.tsx) defines them
+   again inside its own <style> block — values are identical,
+   so there's no conflict, just a backup.
+
+   When the user toggles dark mode, JS sets data-theme="dark"
+   on <html> and these variables flip atomically across the
+   whole document.
+   ============================================================ */
+:root {
+  --bg: #FAF8F4;
+  --bg-alt: #F2EFE8;
+  --bg-trans-70: rgba(250, 248, 244, 0.7);
+  --bg-trans-60: rgba(250, 248, 244, 0.6);
+  --ink: #0A0A0A;
+  --ink-60: #0A0A0A99;
+  --ink-40: #0A0A0A66;
+  --ink-15: #0A0A0A26;
+  --ink-08: #0A0A0A14;
+  --line: #0A0A0A12;
+  --accent: #FF4500;
+  --accent-rgb: 255, 69, 0;
+  --card-pro: #0A0A0A;
+  --card-pro-text: #FAF8F4;
+  --visual-pro-1: #050505;
+  --visual-pro-2: #1C1C1C;
+  --visual-free-1: #EDE7D8;
+  --visual-free-2: #D4CFC3;
+  --silk-secondary: rgba(0, 0, 0, 0.16);
+}
+
+:root[data-theme="dark"] {
+  --bg: #1A1E24;
+  --bg-alt: #232830;
+  --bg-trans-70: rgba(26, 30, 36, 0.75);
+  --bg-trans-60: rgba(26, 30, 36, 0.6);
+  --ink: #F0F1F3;
+  --ink-60: #F0F1F399;
+  --ink-40: #F0F1F366;
+  --ink-15: #F0F1F326;
+  --ink-08: #F0F1F314;
+  --line: #F0F1F312;
+  --accent: #7C5CFF;
+  --accent-rgb: 124, 92, 255;
+  --card-pro: #0E1117;
+  --card-pro-text: #F0F1F3;
+  --visual-pro-1: #0E1117;
+  --visual-pro-2: #1A1F26;
+  --visual-free-1: #2A303A;
+  --visual-free-2: #232830;
+  --silk-secondary: rgba(255, 255, 255, 0.10);
+}
+
+/* When the user clicks the theme toggle, JS adds this class
+   for ~600ms. It animates the color change everywhere. */
+.theme-transitioning,
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  transition: background-color 0.45s ease, background 0.45s ease,
+              color 0.45s ease, border-color 0.45s ease,
+              box-shadow 0.45s ease, fill 0.45s ease, stroke 0.45s ease !important;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Default body chrome — every page now has a themed background
+   even if its own <style> block forgets to set one. */
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fadeInUp 0.4s ease-out; }
