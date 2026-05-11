@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🔥 Resume Roaster AI — v1.4.0
 
 Brutally honest AI resume feedback. Section-by-section breakdown, animated loading, scroll-snap results page. Built with **Next.js 14 · TypeScript · Tailwind · Supabase Auth · Gemma 4 26B A4B** (via OpenRouter, free).
@@ -244,3 +245,6 @@ This is what serious resume reviewers actually do. It's better than fake "we com
 ## 📜 License
 
 MIT.
+=======
+# AI-Resume-Roaster
+>>>>>>> 2e23b67a495920c3833f75d905c45b3a44c7e1da
