@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getSupabase } from "@/lib/supabase-browser";
 
@@ -14,7 +14,7 @@ import { getSupabase } from "@/lib/supabase-browser";
    email or the password was wrong (basic enumeration defense).
    ============================================================ */
 
-export default function LoginPage() {
+function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
@@ -235,3 +235,10 @@ const STYLES = `
   .auth-alt button:hover{text-decoration:underline;}
   @media(max-width:520px){.auth-card{padding:32px 24px;border-radius:20px;}}
 `;
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginContent />
+    </Suspense>
+  );
+}
